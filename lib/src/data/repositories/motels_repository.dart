@@ -8,11 +8,12 @@ class MotelsRepository implements IMotelsRepository {
 
   MotelsRepository(this._httpClientService);
 
-  final String _url = "jsonkeeper.com/b/1IXK";
-
   @override
   Future<ResponseModel> getMotels() async {
-    final response = await _httpClientService.get(_url);
+    final response = await _httpClientService.get(
+      "jsonkeeper.com",
+      unencodedPath: "/b/1IXK",
+    );
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
       return ResponseModel.fromJson(data["data"]);
