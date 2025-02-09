@@ -8,7 +8,7 @@ class ResponseModel {
   final int totalSuites;
   final int totalMoteis;
   final int raio;
-  final int maxPaginas;
+  final double maxPaginas;
   final List<MotelModel> moteis;
 
   ResponseModel({
@@ -24,7 +24,8 @@ class ResponseModel {
   factory ResponseModel.fromRawJson(String str) =>
       ResponseModel.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  static String toRawJson(Map<String, dynamic> response) =>
+      json.encode(response);
 
   factory ResponseModel.fromJson(Map<String, dynamic> json) => ResponseModel(
     pagina: json["pagina"],

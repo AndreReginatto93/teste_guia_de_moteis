@@ -1,5 +1,5 @@
+// coverage:ignore-file
 import 'package:flutter/material.dart';
-
 import 'colors.dart';
 
 abstract final class AppTheme {
