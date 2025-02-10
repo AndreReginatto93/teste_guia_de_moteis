@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:teste_guia_de_moteis/src/data/models/suite_model.dart';
 
 class MotelModel {
@@ -43,11 +41,6 @@ class MotelModel {
     media: media ?? this.media,
   );
 
-  factory MotelModel.fromRawJson(String str) =>
-      MotelModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
   factory MotelModel.fromJson(Map<String, dynamic> json) => MotelModel(
     fantasia: json["fantasia"],
     logo: json["logo"],
@@ -60,15 +53,4 @@ class MotelModel {
     qtdAvaliacoes: json["qtdAvaliacoes"],
     media: json["media"]?.toDouble(),
   );
-
-  Map<String, dynamic> toJson() => {
-    "fantasia": fantasia,
-    "logo": logo,
-    "bairro": bairro,
-    "distancia": distancia,
-    "qtdFavoritos": qtdFavoritos,
-    "suites": List<dynamic>.from(suites.map((x) => x.toJson())),
-    "qtdAvaliacoes": qtdAvaliacoes,
-    "media": media,
-  };
 }

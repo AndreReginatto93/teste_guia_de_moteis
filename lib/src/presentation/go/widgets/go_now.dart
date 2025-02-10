@@ -418,7 +418,10 @@ class GoNowPage extends StatelessWidget {
                                     ),
                                   ),
                                   child: Text(
-                                    "${((1 - (e.valorTotal / e.valor)) * 100).round()}% OFF",
+                                    viewModel.formatDiscount(
+                                      e.valorTotal,
+                                      e.valor,
+                                    ),
                                     style: Theme.of(context)
                                         .textTheme
                                         .labelSmall!
@@ -432,7 +435,7 @@ class GoNowPage extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              "R\$ ${e.valor.toStringAsFixed(2).replaceAll('.', ',')}",
+                              viewModel.formatCurrency(e.valor),
                               style: Theme.of(
                                 context,
                               ).textTheme.bodyLarge!.copyWith(
@@ -453,7 +456,7 @@ class GoNowPage extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 12.0),
                                 child: Text(
-                                  "R\$ ${e.valorTotal.toStringAsFixed(2).replaceAll('.', ',')}",
+                                  viewModel.formatCurrency(e.valorTotal),
                                   style: Theme.of(context).textTheme.bodyLarge!
                                       .copyWith(color: AppColors.black2),
                                 ),

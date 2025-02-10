@@ -90,4 +90,12 @@ class HomeViewmodel with ChangeNotifier {
             .cast<MotelModel>();
     notifyListeners();
   }
+
+  String formatCurrency(double value) {
+    return "R\$ ${value.toStringAsFixed(2).replaceAll('.', ',')}";
+  }
+
+  String formatDiscount(double valorTotal, double valor) {
+    return "${((1 - (valorTotal / valor)) * 100).round()}% OFF";
+  }
 }

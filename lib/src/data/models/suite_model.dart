@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:teste_guia_de_moteis/src/data/models/categoria_model.dart';
 import 'package:teste_guia_de_moteis/src/data/models/item_model.dart';
 import 'package:teste_guia_de_moteis/src/data/models/periodo_model.dart';
@@ -23,11 +21,6 @@ class SuiteModel {
     required this.periodos,
   });
 
-  factory SuiteModel.fromRawJson(String str) =>
-      SuiteModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
   factory SuiteModel.fromJson(Map<String, dynamic> json) => SuiteModel(
     nome: json["nome"],
     qtd: json["qtd"],
@@ -41,16 +34,4 @@ class SuiteModel {
       json["periodos"].map((x) => Periodo.fromJson(x)),
     ),
   );
-
-  Map<String, dynamic> toJson() => {
-    "nome": nome,
-    "qtd": qtd,
-    "exibirQtdDisponiveis": exibirQtdDisponiveis,
-    "fotos": List<dynamic>.from(fotos.map((x) => x)),
-    "itens": List<dynamic>.from(itens.map((x) => x.toJson())),
-    "categoriaItens": List<CategoriaItem>.from(
-      categoriaItens.map((x) => x.toJson()),
-    ),
-    "periodos": List<dynamic>.from(periodos.map((x) => x.toJson())),
-  };
 }

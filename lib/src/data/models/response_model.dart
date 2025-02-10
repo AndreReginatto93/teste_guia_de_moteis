@@ -21,9 +21,6 @@ class ResponseModel {
     required this.moteis,
   });
 
-  factory ResponseModel.fromRawJson(String str) =>
-      ResponseModel.fromJson(json.decode(str));
-
   static String toRawJson(Map<String, dynamic> response) =>
       json.encode(response);
 
@@ -38,14 +35,4 @@ class ResponseModel {
       json["moteis"].map((x) => MotelModel.fromJson(x)),
     ),
   );
-
-  Map<String, dynamic> toJson() => {
-    "pagina": pagina,
-    "qtdPorPagina": qtdPorPagina,
-    "totalSuites": totalSuites,
-    "totalMoteis": totalMoteis,
-    "raio": raio,
-    "maxPaginas": maxPaginas,
-    "moteis": List<dynamic>.from(moteis.map((x) => x.toJson())),
-  };
 }

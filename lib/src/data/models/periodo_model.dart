@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:teste_guia_de_moteis/src/data/models/desconto_model.dart';
 
 class Periodo {
@@ -19,10 +17,6 @@ class Periodo {
     required this.desconto,
   });
 
-  factory Periodo.fromRawJson(String str) => Periodo.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
   factory Periodo.fromJson(Map<String, dynamic> json) => Periodo(
     tempoFormatado: json["tempoFormatado"],
     tempo: json["tempo"],
@@ -32,13 +26,4 @@ class Periodo {
     desconto:
         json["desconto"] == null ? null : Desconto.fromJson(json["desconto"]),
   );
-
-  Map<String, dynamic> toJson() => {
-    "tempoFormatado": tempoFormatado,
-    "tempo": tempo,
-    "valor": valor,
-    "valorTotal": valorTotal,
-    "temCortesia": temCortesia,
-    "desconto": desconto?.toJson(),
-  };
 }
