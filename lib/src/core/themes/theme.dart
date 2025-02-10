@@ -9,21 +9,9 @@ abstract final class AppTheme {
     titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
     bodyLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
     bodyMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-    bodySmall: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w400,
-      color: AppColors.grey3,
-    ),
-    labelSmall: TextStyle(
-      fontSize: 10,
-      fontWeight: FontWeight.w500,
-      color: AppColors.grey3,
-    ),
-    labelLarge: TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w400,
-      color: AppColors.grey3,
-    ),
+    bodySmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+    labelSmall: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+    labelLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
   );
 
   static ThemeData lightTheme = ThemeData(
@@ -31,6 +19,7 @@ abstract final class AppTheme {
     brightness: Brightness.light,
     colorScheme: AppColors.lightColorScheme,
     textTheme: _textTheme,
+    cardTheme: CardTheme(elevation: 0.5),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -38,5 +27,6 @@ abstract final class AppTheme {
     brightness: Brightness.dark,
     colorScheme: AppColors.darkColorScheme,
     textTheme: _textTheme,
+    cardTheme: CardTheme(elevation: 0.5),
   );
 }

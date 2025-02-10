@@ -1,3 +1,4 @@
+// coverage:ignore-file
 import 'http_client_interface.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io' as io;
@@ -16,10 +17,13 @@ class HttpClient implements IHttpClientService {
   Future<http.Response> get(
     String path, {
     String? unencodedPath,
-    Map<String, dynamic>? queryParameters,
+    Map<String, String>? headers,
   }) async {
     try {
-      return await http.get(Uri.http(path, unencodedPath ?? ""));
+      return await http.get(
+        Uri.http(path, unencodedPath ?? ""),
+        headers: headers,
+      );
     } catch (e) {
       rethrow;
     }

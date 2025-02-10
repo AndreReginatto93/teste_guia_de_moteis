@@ -11,11 +11,16 @@ import 'response_mock.dart';
 class MockHttpClientService extends Mock implements IHttpClientService {
   @override
   Future<http.Response> get(
-    String url, {
-    Map<String, dynamic>? queryParameters,
+    String path, {
+    String? unencodedPath,
+    Map<String, String>? headers,
   }) {
     return super.noSuchMethod(
-      Invocation.method(#get, [url], {#queryParameters: queryParameters}),
+      Invocation.method(
+        #get,
+        [path],
+        {#unencodedPath: unencodedPath, #headers: headers},
+      ),
       returnValue: Future.value(
         http.Response(jsonEncode(ResponseMockTest.mock), 200),
       ),

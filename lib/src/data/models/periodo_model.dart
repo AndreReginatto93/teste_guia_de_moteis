@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:teste_guia_de_moteis/src/data/models/desconto_model.dart';
 
 class Periodo {
-  final TempoFormatado tempoFormatado;
+  final String tempoFormatado;
   final String tempo;
   final double valor;
   final double valorTotal;
@@ -24,7 +24,7 @@ class Periodo {
   String toRawJson() => json.encode(toJson());
 
   factory Periodo.fromJson(Map<String, dynamic> json) => Periodo(
-    tempoFormatado: tempoFormatadoValues.map[json["tempoFormatado"]]!,
+    tempoFormatado: json["tempoFormatado"],
     tempo: json["tempo"],
     valor: json["valor"]?.toDouble(),
     valorTotal: json["valorTotal"]?.toDouble(),
@@ -34,31 +34,11 @@ class Periodo {
   );
 
   Map<String, dynamic> toJson() => {
-    "tempoFormatado": tempoFormatadoValues.reverse[tempoFormatado],
+    "tempoFormatado": tempoFormatado,
     "tempo": tempo,
     "valor": valor,
     "valorTotal": valorTotal,
     "temCortesia": temCortesia,
     "desconto": desconto?.toJson(),
   };
-}
-
-enum TempoFormatado { DOZE_HORAS, TRES_HORAS, SEIS_HORAS }
-
-final tempoFormatadoValues = EnumValues({
-  "12 horas": TempoFormatado.DOZE_HORAS,
-  "3 horas": TempoFormatado.TRES_HORAS,
-  "6 horas": TempoFormatado.SEIS_HORAS,
-});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
 }

@@ -23,6 +23,26 @@ class MotelModel {
     required this.media,
   });
 
+  MotelModel copyWith({
+    String? fantasia,
+    String? logo,
+    String? bairro,
+    double? distancia,
+    int? qtdFavoritos,
+    List<SuiteModel>? suites,
+    int? qtdAvaliacoes,
+    double? media,
+  }) => MotelModel(
+    fantasia: fantasia ?? this.fantasia,
+    logo: logo ?? this.logo,
+    bairro: bairro ?? this.bairro,
+    distancia: distancia ?? this.distancia,
+    qtdFavoritos: qtdFavoritos ?? this.qtdFavoritos,
+    suites: suites ?? this.suites,
+    qtdAvaliacoes: qtdAvaliacoes ?? this.qtdAvaliacoes,
+    media: media ?? this.media,
+  );
+
   factory MotelModel.fromRawJson(String str) =>
       MotelModel.fromJson(json.decode(str));
 

@@ -1,5 +1,6 @@
+// coverage:ignore-file
 import 'package:flutter/material.dart';
-import 'package:teste_guia_de_moteis/src/presentation/go/go_page.dart';
+import 'package:teste_guia_de_moteis/src/presentation/go/home_page.dart';
 
 abstract class INavigationHandler {
   late GlobalKey<NavigatorState> appGlobalKey;
@@ -19,11 +20,11 @@ class NavigationHandler implements INavigationHandler {
     debugPrint('NavigationHandler: appRoute ${settings.name}');
 
     switch (settings.name) {
-      case GoPage.route:
+      case HomePage.route:
         return MaterialPageRoute(
           settings: settings,
           builder: (_) {
-            return GoPage();
+            return HomePage();
           },
         );
 
